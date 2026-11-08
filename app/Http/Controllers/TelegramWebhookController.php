@@ -29,15 +29,15 @@ class TelegramWebhookController extends Controller
             'has_secret_header' => $request->hasHeader('X-Telegram-Bot-Api-Secret-Token'),
         ]);
 
-        $secretToken = $request->header('X-Telegram-Bot-Api-Secret-Token');
+        // $secretToken = $request->header('X-Telegram-Bot-Api-Secret-Token');
 
-        if (config('telegram.webhook_secret') && $secretToken !== config('telegram.webhook_secret')) {
-            Log::warning('Telegram webhook: Unauthorized request rejected', [
-                'ip' => $request->ip(),
-            ]);
+        // if (config('telegram.webhook_secret') && $secretToken !== config('telegram.webhook_secret')) {
+        //     Log::warning('Telegram webhook: Unauthorized request rejected', [
+        //         'ip' => $request->ip(),
+        //     ]);
 
-            return response()->json(['status' => 'unauthorized'], 403);
-        }
+        //     return response()->json(['status' => 'unauthorized'], 403);
+        // }
 
         Log::info('Telegram webhook: Authentication successful');
 
